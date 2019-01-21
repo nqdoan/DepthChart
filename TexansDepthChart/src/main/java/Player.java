@@ -3,6 +3,7 @@ public class Player {
     String position;
     int number;
     String name;
+    int depth;
     String team;
     String unit;
     int year;
@@ -56,5 +57,12 @@ public class Player {
         this.year = year;
     }
 
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
 
 }
