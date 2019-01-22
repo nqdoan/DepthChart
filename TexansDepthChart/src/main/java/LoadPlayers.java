@@ -8,24 +8,45 @@ import java.util.StringTokenizer;
 public class LoadPlayers {
 
     public void loadPlayers(){
-        System.out.println("We're in LoadPlayers");
-        try(BufferedReader buffread = new BufferedReader(new FileReader("OfficialWebsiteTestData.txt"))){
-            String input = buffread.readLine();
-            System.out.println(input);
-            System.out.println("we're in the file");
+        String filePath = "src/main/resources/OfficialWebsiteTestData.txt";
+        Player player = new Player();
 
+        try(BufferedReader buffread = new BufferedReader(new FileReader(filePath))){
+            String input;
             while((input = buffread.readLine()) != null){
+                StringTokenizer st = new StringTokenizer(input, " ");
+                while(st.hasMoreTokens()){
 
+
+
+                    System.out.println(st.nextToken());
+                }
             }
         } catch(IOException e){
+            System.out.println("File not found.");
+        }
+    }
 
-        }
-        /*
-        StringTokenizer st = new StringTokenizer(test, "\\t");
-        while(st.hasMoreTokens()){
-            System.out.println(st.nextToken());
-        }
-        */
+
+    public boolean checkUppercase(String input){
+        if(input.equals(input.toUpperCase()))
+            return true;
+        else
+            return false;
+    }
+
+    public Player setPlayer(String position, int number, String name, int depth, String team, String unit, int year){
+        Player player = new Player();
+
+        player.setPosition(position);
+        player.setNumber(number);
+        player.setName(name);
+        player.setDepth(depth);
+        player.setTeam(team);
+        player.setUnit(unit);
+        player.setYear(year);
+
+        return player;
     }
 
 }
