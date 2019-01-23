@@ -8,17 +8,28 @@ import java.util.StringTokenizer;
 public class LoadPlayers {
 
     public void loadPlayers(){
-        String filePath = "src/main/resources/OfficialWebsiteTestData.txt";
+        String filePath = "src/main/resources/OurLadTestData.txt";
         Player player = new Player();
+        String position = "";
+        int number = 0;
+        String name = "";
+        int depth = 0;
+        String team = "";
+        String unit = "";
+        int year = 0;
+
 
         try(BufferedReader buffread = new BufferedReader(new FileReader(filePath))){
             String input;
             while((input = buffread.readLine()) != null){
-                StringTokenizer st = new StringTokenizer(input, " ");
+                StringTokenizer st = new StringTokenizer(input, "\t");
                 while(st.hasMoreTokens()){
+                    if(st.nextToken().equals("OFFENSE"))
+                        unit = "OFFENSE";
+                    else if(checkUppercase(st.nextToken()) == true)
+                        position = st.nextToken();
 
-
-
+                    player = setPlayer(position, number, name, depth, team, unit, year);
                     System.out.println(st.nextToken());
                 }
             }
