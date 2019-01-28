@@ -1,0 +1,40 @@
+OFFENSE
+LWR	10	Hopkins, DeAndre 13/1
+RWR	16	Coutee, Keke 18/4	14	Carter, DeAndre W/Phi
+WR	17	Smith, Vyncint CF18	11	Mitchell Jr., Steven CF18
+LT	70	Davenport, Julie'n 17/4	75	Rankin, Martinas 18/3
+LG	64	Kelemete, Senio U/NO
+C	66	Martin, Nick 16/2	65	Mancz, Greg CF15
+RG	73	Fulton, Zach U/KC
+RT	74	Lamm, Kendall CF15	63	Johnson, Roderick W/Cle
+TE	84	Griffin, Ryan 13/6	88	Akins, Jordan 18/3
+TE	83	Thomas, Jordan 18/6
+QB	4	Watson, Deshaun 17/1	3	WEEDEN, BRANDON U/Ten	5	WEBB, JOE U/Buf
+RB	26	Miller, Lamar U/Mia	28	Blue, Alfred 14/6	27	Foreman, D'Onta 17/3	38	Howell, Gregory W/Mia
+DEFENSE
+DE	98	Reader, DJ 16/5	97	Blackson, Angelo P/NE	93	Heath, Joel CF16
+NT	92	Dunn, Brandon P/Chi
+DE	99	Watt, JJ 11/1	95	Covington, Christian 15/6	91	Watkins, Carlos 17/4
+SLB	59	Mercilus, Whitney 12/1
+WILL	41	Cunningham, Zach 17/2	51	Cole, Dylan CF17	58	Kalambayi, Peter 18/6
+MIKE	55	McKinney, Benardrick 15/2	50	Adams, Tyrell P/SF	49	Keyes, Josh SF18
+JACK	90	Clowney, Jadeveon 14/1	53	Ejiofor, Duke 18/6
+LCB	24	JOSEPH, JOHNATHAN U/Cin	43	WRIGHT, SHAREECE SF18	23	Bademosi, Johnson U/NE
+SS	32	Mathieu, Tyrann CC/Arz	34	Tyson, Mike SF18
+FS	20	Reid, Justin 18/3	29	Hal, Andre 14/7	33	Moore, AJ W/NE
+RCB	25	JACKSON, KAREEM 10/1	22	Colvin, Aaron U/Jax	39	Burton, Deante P/Atl
+SPECIAL TEAMS
+P	8	Daniel, Trevor CF18
+PK	7	Fairbairn, Ka'imi CF16
+LS	46	WEEKS, JONATHAN CF10
+H	8	Daniel, Trevor CF18
+PR	14	Carter, DeAndre W/Phi	16	Coutee, Keke 18/4
+KR	14	Carter, DeAndre W/Phi	16	Coutee, Keke 18/4
+PRACTICE SQUAD
+PS	48	Bellamy, Davin OB	79	Steinmetz, David OT	77	Shakir, Maurquice OT	19	Whitney, Isaac WR	40	Ferguson, Josh RB
+PS	89	Adams, Jerell TE	62	Slade, Chad OG	12	Etta-Tawo, Amba WR	42	Landrum, Chris OB	31	Hunter, Michael CB
+RESERVES
+RES	35	Kelly, Jermaine IR	15	Fuller, Will IR	57	Scarlett, Brennan IR	30	Johnson, Kevin IR	76	Henderson, Seantrel IR
+RES	86	Weah, Jester PS/INJ	52	PETERS, BRIAN IR	87	THOMAS, DEMARYIUS IR	36	Webster, Kayvon IR
+
+

@@ -2,13 +2,13 @@ package main.java;
 
 public class Player {
 
-    String position;
-    String number;
-    String name;
-    int depth;
-    String team;
-    String unit;
-    int year;
+    private String position;
+    private String number;
+    private String name;
+    private int depth;
+    private String team;
+    private String unit;
+    private int year;
 
 
     public String getPosition() {
