@@ -3,7 +3,7 @@ package main.java;
 public class Player {
 
     private String position;
-    private String number;
+    private int number;
     private String name;
     private int depth;
     private String team;
@@ -19,11 +19,11 @@ public class Player {
         this.position = position;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

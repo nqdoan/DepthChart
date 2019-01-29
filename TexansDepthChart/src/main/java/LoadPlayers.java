@@ -1,4 +1,3 @@
-/*
 package main.java;
 
 import java.io.BufferedReader;
@@ -14,49 +13,61 @@ import main.java.Player;
 
 public class LoadPlayers {
 
-    public void loadPlayers(){
+    public void loadPlayers() {
+        BufferedReader buffReader = null;
         String filePath = "TexansDepthChart/src/main/resources/OurLadTestData.txt";
-        List<Player> player = new ArrayList();
+        List<Player> playerList = new ArrayList();
         String position = "";
-        String number = "";
-        String name = "";
-        int depth = 0;
+        Integer depth = 0;
+        Integer number;
         String unit = "";
+        int depthCounter = 1;
 
-        try(BufferedReader buffread = new BufferedReader(new FileReader(filePath))){
-            String input;
-            StringTokenizer st;
-            int depthCounter = 1;
-
-            while((input = buffread.readLine()) != null) {
-                System.out.println(input);
-                st = new StringTokenizer(input);
-                */
-/*System.out.println(st.toString());*//*
-
-                while(st.hasMoreTokens()) {
-                    String cursorPosition = st.nextToken();
-                    if(cursorPosition.equals("OFFENSE"))
-                        unit = "OFFENSE";
-                    else if(checkUppercase(cursorPosition) && (cursorPosition.length() < 4))
-                        position = cursorPosition;
-                    else
-                        number = st.nextToken();
-                        name = st.nextToken();
-                        depth = depthCounter;
-                        depthCounter++;
+        try {
+                buffReader = new BufferedReader(new FileReader(filePath));
+                String input;
+                while((input = buffReader.readLine()) != null) {
+                        StringTokenizer stringTokenizer = new StringTokenizer(input, "\t");
+                        while(stringTokenizer.hasMoreElements()){
+                            String nextInput = stringTokenizer.nextElement().toString();
+                            if(nextInput.equals("OFFENSE")){
+                                unit = "OFFENSE";}
+                            else if(nextInput.equals("DEFENSE")){
+                                unit = "DEFENSE";}
+                            else if(nextInput.equals("SPECIAL TEAMS")){
+                                unit = "SPECIAL TEAMS";}
+                            else if(nextInput.equals("PRACTICE SQUAD")){
+                                unit = "PRACTICE SQUAD";}
+                            else if(nextInput.equals("RESERVES")) {
+                                unit = "RESERVES"; }
+                            else if(checkUppercase(nextInput) && nextInput.length() < 5 && (isStringInt(nextInput)) == false) {
+                                position = nextInput;
+                                depthCounter = 1;
+                            }
+                            else{
+                                number = Integer.parseInt(nextInput);
+                                String name = stringTokenizer.nextElement().toString();
+                                depthCounter++;
+                                playerList.add(setPlayer(position, number, name, depthCounter, unit));
+                            }
+                    }
                 }
-                player.add(setPlayer(position, number, name, depth, unit));
-                depthCounter = 1;
-            }
-        } catch(IOException e){
+
+        } catch (IOException e) {
             System.out.println("File not found.");
-        } catch(NoSuchElementException f)
-        {
+        } catch (NoSuchElementException f) {
             System.out.println("No more tokens in this tokenizers string.");
         }
     }
 
+    public boolean isStringInt(String input){
+        try{
+            Integer.parseInt(input);
+            return true;
+        }catch(NumberFormatException e) {
+            return false;
+        }
+    }
 
     public boolean checkUppercase(String input){
         if(input.equals(input.toUpperCase()))
@@ -65,7 +76,7 @@ public class LoadPlayers {
             return false;
     }
 
-    public Player setPlayer(String position, String number, String name, int depth, String unit){
+    public Player setPlayer(String position, int number, String name, int depth, String unit){
         Player player = new Player();
 
         player.setPosition(position);
@@ -78,53 +89,9 @@ public class LoadPlayers {
 
         return player;
     }
-    */
-/*
-                        else if(st.nextToken().equals("DEFENSE"))
-                        unit = "DEFENSE";
-                    else if(st.nextToken().equals("SPECIAL TEAMS"))
-                        unit = "SPECIAL TEAMS";
-                    else if(st.nextToken().equals("PRACTICE SQUAD"))
-                        unit = "PRACTICE SQUAD";
-                    else if(st.nextToken().equals("RESERVES"))
-                        unit = "RESERVES";
-                        *//*
 
+    public void displayPlayers(){
 
-
-}
-*/
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
-public class ReadFile {
-    public static void main(String[] args) {
-        BufferedReader br = null;
-        try {
-            String line;
-            br = new BufferedReader(new FileReader("c:/test.csv"));
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                StringTokenizer stringTokenizer = new StringTokenizer(line, "|");
-                while (stringTokenizer.hasMoreElements()) {
-                    Integer id = Integer.parseInt(stringTokenizer.nextElement().toString());
-                    Double price = Double.parseDouble(stringTokenizer.nextElement().toString());
-                    String username = stringTokenizer.nextElement().toString();
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("\nId : " + id); sb.append("\nPrice : " + price); sb.append("\nUsername : " + username); sb.append("\n*******************\n");
-                    System.out.println(sb.toString());
-                }
-            }
-            System.out.println("Done");
-        } catch (IOException e) { e.printStackTrace();
-        }
-        finally {
-            try {
-                if (br != null) br.close();
-            } catch (IOException ex) { ex.printStackTrace();
-            }
-        }
     }
 }
+
