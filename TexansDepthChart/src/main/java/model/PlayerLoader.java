@@ -1,22 +1,18 @@
-package main.java;
+package main.java.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
+import java.util.*;
 
-import main.java.Player;
+public class PlayerLoader {
 
+    String filePath = "src/main/resources/OurLadTestData.txt";
+    List<Player> playerList = new ArrayList<Player>();
 
-public class LoadPlayers {
 
     public void loadPlayers() {
         BufferedReader buffReader = null;
-        String filePath = "TexansDepthChart/src/main/resources/OurLadTestData.txt";
-        List<Player> playerList = new ArrayList();
         String position = "";
         Integer depth = 0;
         Integer number;
@@ -91,7 +87,29 @@ public class LoadPlayers {
     }
 
     public void displayPlayers(){
+        Iterator<Player> playerIterator = playerList.iterator();
+        while(playerIterator.hasNext()){
+            Player displayPlayer = new Player();
+            displayPlayer = playerIterator.next();
+            System.out.println(displayPlayer.getPosition());
+            System.out.println(displayPlayer.getNumber());
+            System.out.println(displayPlayer.getName());
+            System.out.println(displayPlayer.getDepth());
+            System.out.println(displayPlayer.getTeam());
+            System.out.println(displayPlayer.getUnit());
+            System.out.println(displayPlayer.getYear());
+        }
+    }
 
+    public void cleanThirdCellFromPlayerName(){
+        for(Player currentInstance: playerList){
+            String name = currentInstance.getName();
+            String[] stringSplit = name.split(" ");
+            name = stringSplit[0] + " " + stringSplit[1];
+            currentInstance.setName(name);
+
+
+        }
     }
 }
 
