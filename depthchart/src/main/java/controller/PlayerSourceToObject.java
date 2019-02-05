@@ -1,11 +1,13 @@
-package model;
+package controller;
+
+import model.Player;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class PlayerLoader {
+public class PlayerSourceToObject {
 
     String filePath = "src/main/resources/OurLadTestData.txt";
     List<Player> playerList = new ArrayList<Player>();
@@ -110,6 +112,13 @@ public class PlayerLoader {
 
 
         }
+    }
+
+    public List<Player> returnPlayerList(){
+        loadPlayers();
+        cleanThirdCellFromPlayerName();
+        displayPlayers();
+        return playerList;
     }
 }
 

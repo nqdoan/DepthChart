@@ -3,7 +3,7 @@ plugins {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0' //version required
+    gradleVersion = '5.0' //version required
 }
 
 task(runMain, dependsOn: 'classes', type: JavaExec) {

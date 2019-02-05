@@ -1,14 +1,15 @@
 package main;
 
-import model.PlayerLoader;
+import controller.PlayerObjectToDatabase;
+import controller.PlayerSourceToObject;
 
-public class Main {
+public class DepthChart {
 
     public static void main(String[] args) {
-        PlayerLoader lp = new PlayerLoader();
-        lp.loadPlayers();
-        lp.cleanThirdCellFromPlayerName();
-        lp.displayPlayers();
+        PlayerSourceToObject sto = new PlayerSourceToObject();
+        PlayerObjectToDatabase  otd = new PlayerObjectToDatabase();
+        sto.returnPlayerList();
+        otd.getConnection();
 
     }
 }
