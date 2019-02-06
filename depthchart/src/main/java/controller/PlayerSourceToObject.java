@@ -16,7 +16,6 @@ public class PlayerSourceToObject {
     public void loadPlayers() {
         BufferedReader buffReader = null;
         String position = "";
-        Integer depth = 0;
         Integer number;
         String unit = "";
         int depthCounter = 1;
@@ -45,8 +44,8 @@ public class PlayerSourceToObject {
                             else{
                                 number = Integer.parseInt(nextInput);
                                 String name = stringTokenizer.nextElement().toString();
-                                depthCounter++;
                                 playerList.add(setPlayer(position, number, name, depthCounter, unit));
+                                depthCounter++;
                             }
                     }
                 }
@@ -117,7 +116,6 @@ public class PlayerSourceToObject {
     public List<Player> returnPlayerList(){
         loadPlayers();
         cleanThirdCellFromPlayerName();
-        displayPlayers();
         return playerList;
     }
 }

@@ -1,46 +1,80 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import model.Player;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class PlayerObjectToDatabase {
+
     public Connection getConnection() {
-        try {
-        String username = "";
-        String password = "";
+        String username = "nqdoan";
+        String password = "Sparta123!";
         String url = "jdbc:mysql://nqdoandb.celtpg05ihar.us-east-1.rds.amazonaws.com:3306/";
-        Connection conn = null;
 
-        conn = DriverManager.getConnection(url, username, password);
+        // Connect to MySQL
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(url, username, password);
 
-        System.out.println("Connected to database");
-        return conn;
-    } catch (SQLException e) {
-        System.out.println("Unable to establish connection");
-        Connection returnConn = null;
-        return returnConn;
+        } catch (SQLException e) {
+            System.out.println("Connection Failed!" + e.getMessage());
+        }
+        if (connection != null) {
+            System.out.println("You are connected.");
+        } else {
+            System.out.println("Failed to make connection.");
+        }
+
+        return connection;
     }
+
+
+    public void loadPlayers(){
+        PlayerSourceToObject psto = new PlayerSourceToObject();
+        List<Player> playerList = new ArrayList<Player>();
+        playerList = psto.returnPlayerList();
+
+        Iterator<Player> playerIterator = playerList.iterator();
+        while(playerIterator.hasNext()){
+            Player currentPlayer = new Player();
+            currentPlayer = playerIterator.next();
+            insert(currentPlayer.getPosition(),   currentPlayer.getNumber(),  currentPlayer.getName(),  currentPlayer.getDepth(), currentPlayer.getTeam(),  currentPlayer.getUnit(),  currentPlayer.getYear());
+        }
+
+
+
+
+        }
+
+
+    public void insert(String position, int number, String name, int depth, String team, String unit, int year) {
+
+        String sql = "INSERT INTO player(position, number, name, depth, team, unit, year) VALUES (?,?,?,?,?,?,?)";
+        String useDatabase = "USE depthchart";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, position);
+            pstmt.setInt(2, number);
+            pstmt.setString(3, name);
+            pstmt.setInt(4, depth);
+            pstmt.setString(5, team);
+            pstmt.setString(6, unit);
+            pstmt.setInt(7, year);
+            pstmt.execute(useDatabase);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+
+        }
     }
 }
-/*
 
-    public static void main(String[] args) {
-        String host = "jdbc:derby://localhost:1527/Employees";
-        String uName = "root";
-        String uPass = "password";
 
-        try (Connection conn = DriverManager.getConnection(host, uName, uPass);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(SELECT_QUERY)) {
 
-            while (rs.next()) {
-                //read your lines one ofter one
-                int id = rs.getInt("id");
-                String somePropertyValue = rs.getInt("some_column_name");
-                // etc.
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-*/
+
+
+

@@ -8,8 +8,7 @@ public class DepthChart {
     public static void main(String[] args) {
         PlayerSourceToObject sto = new PlayerSourceToObject();
         PlayerObjectToDatabase  otd = new PlayerObjectToDatabase();
-        sto.returnPlayerList();
-        otd.getConnection();
+        otd.loadPlayers();
 
     }
 }
